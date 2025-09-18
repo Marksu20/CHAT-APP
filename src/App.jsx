@@ -8,7 +8,7 @@ import Register from './components/Register'
 const App = () => {
   return (
     <div>
-      <div>
+      <div className="flex lg:flex-row flex-col items-start w-[100%]">
         <Navlinks />
         <Chatlist />
         <Chatbox />
