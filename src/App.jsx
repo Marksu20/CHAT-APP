@@ -7,8 +7,8 @@ import Register from './components/Register'
 
 const App = () => {
   return (
-    <div>
-      <div className="flex lg:flex-row flex-col items-start w-[100%] bg-[#F5F5F5]">
+    <>
+      <div className="flex lg:flex-row flex-col w-full h-screen bg-[#F5F5F5]">
         <Navlinks />
         <Chatlist />
         <Chatbox />
@@ -17,7 +17,7 @@ const App = () => {
         <Login /> 
         <Register />
       </div>
-    </div>
+    </>
   )
 }
 

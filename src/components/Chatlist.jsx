@@ -24,8 +24,10 @@ const Chatlist = () => {
 
 
   return (
-    <section className="relative hidden lg:flex flex-col item-start justify-start bg-white h-[100vh] w-[100%] md:w-[600px]">
-      <header className="flex items-center justify-between w-[100%] lg:border-b border-b-1 border-gray-300 p-4 sticky top-0 md:static z-[100]">
+    <section className="hidden flex-col lg:flex min-h-0 my-4 mx-2 w-full lg:w-[350px] xl:w-[400px] bg-[white] rounded-lg shadow-sm">
+      {/* relative md:w-[700px] */}
+      <header className="flex items-center justify-between h-[70px] shrink-0 p-4">
+        {/* lg:border-b border-b-1 border-gray-300 p-4 sticky top-0 md:static z-[100] */}
         <main className="flex items-center gap-3">
           <img 
             src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" 
@@ -37,24 +39,28 @@ const Chatlist = () => {
             <p className="p-0 font-light text-[] text-[15px]">@catchat</p>
           </span>
         </main>
-        <button className="bg-[#616367] w-[35px] h-[35px] p-2 flex items-center justify-center rounded-lg">
-            <RiMore2Fill style={iconStyle} />
-          </button>
+
+        <button className="bg-[#616367] w-[35px] h-[35px] p-2 flex items-center justify-center rounded-lg cursor-pointer">
+          <RiMore2Fill style={iconStyle} />
+        </button>
       </header>
 
-      <div className="w-[100%] mt-[10px] px-5">
+      {/* Sub-header */}
+      <div className="shrink-0 px-5 py-2 border-b border-gray-200">
+        {/* h-full w-full mt-[10px] px-5 */}
         <header className="flex items-center justify-between">
           <h3 className="text-[16px]">Message ({chats?.length || 0})</h3>
           <SearchModal />
         </header>
       </div>
 
-      <main className="flex flex-col itemms-start mt-[1.5rem] pb-3">
+      <main className="flex-1 overflow-y-auto min-h-0 rounded-lg">
+        {/* flex flex-col itemms-start mt-[1.5rem] pb-3 */}
           {sortedChats?.map((chat) => (
             <>
               <button 
                 key={chat?.uid} 
-                className="flex items-start justify-between w-[100%] border-b border-gray-300 px-5 pb-3 pt-3"
+                className="flex items-start justify-between w-full border-b border-gray-300 px-5 pb-3 pt-3 cursor-pointer hover:bg-[#fcfcfc]"
               >
                 {chat?.users
                   ?.filter((user) => user?.email !== "catchatuser@test.com")
