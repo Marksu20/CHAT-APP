@@ -6,7 +6,7 @@ const SearchModal = () => {
 
   return (
     <div>
-      <button className="bg-[#616367] w-[35px] h-[35px] p-2 flex items-center justify-center rounded-lg">
+      <button className="bg-[#616367] w-[35px] h-[35px] p-2 flex items-center justify-center rounded-lg cursor-pointer">
         <RiSearchLine style={iconStyle} className="w-[18px] h-[18px]"/>
       </button>
     </div>
