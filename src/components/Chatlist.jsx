@@ -24,7 +24,7 @@ const Chatlist = () => {
 
 
   return (
-    <section className="hidden flex-col lg:flex min-h-0 my-4 mx-2 w-full lg:w-[350px] xl:w-[400px] bg-[white] rounded-lg shadow-sm">
+    <section className="hidden flex-col lg:flex min-h-0 my-4 ml-2 w-full lg:w-[350px] xl:w-[400px] bg-[white] rounded-lg shadow-sm">
       {/* relative md:w-[700px] */}
       <header className="flex items-center justify-between h-[70px] shrink-0 p-4">
         {/* lg:border-b border-b-1 border-gray-300 p-4 sticky top-0 md:static z-[100] */}
@@ -54,7 +54,7 @@ const Chatlist = () => {
         </header>
       </div>
 
-      <main className="flex-1 overflow-y-auto min-h-0 rounded-lg">
+      <main className="flex-1 custom-scrollbar overflow-y-auto min-h-0 rounded-lg">
         {/* flex flex-col itemms-start mt-[1.5rem] pb-3 */}
           {sortedChats?.map((chat) => (
             <>
@@ -77,7 +77,7 @@ const Chatlist = () => {
                           <p className="p-0 font-light text-[] text-[14px] text-left">{chat?.lastMessage}</p>
                         </span>
                       </div>
-                      <p className="p-0 font-regular text-[] text-[11px] text-left">{formatTimestamp(chat?.lastMessageTimeStamp)}</p>
+                      <p className="p-0 font-regular text-[] text-[11px] text-right">{formatTimestamp(chat?.lastMessageTimeStamp)}</p>
                     </>
                 ))}
               </button>
