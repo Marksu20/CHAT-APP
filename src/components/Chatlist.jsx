@@ -1,17 +1,22 @@
-import React from 'react'
-import { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo }  from 'react'
 import { RiMore2Fill } from 'react-icons/ri'
 import SearchModal from './SearchModal'
+import SearchResult from './SearchResult'
 import { formatTimestamp } from '../utils/formatTimestamp'
-
 import chatData from '../data/chats'
+import { listenForChats } from '../firebase/firebase'
+
 const Chatlist = () => {
   const iconStyle = { color: '#ffffffff' }
   
   const [chats, setChats] = useState([]);
 
   useEffect(() => {
-    setChats(chatData);
+    const unsubscribe = listenForChats(setChats);
+
+    return () => {
+      unsubscribe();
+    }
   }, []);
 
   const sortedChats = useMemo(() => {
@@ -22,6 +27,7 @@ const Chatlist = () => {
     })
   }, [chats])
 
+  const [result, setResult] = useState([]);
 
   return (
     <section className="hidden flex-col lg:flex min-h-0 my-4 ml-2 w-full lg:w-[350px] xl:w-[400px] bg-[white] rounded-lg shadow-sm">
@@ -46,44 +52,46 @@ const Chatlist = () => {
       </header>
 
       {/* Sub-header */}
-      <div className="shrink-0 px-5 py-2 border-b border-gray-200">
+      <div className="shrink-0 px-3 py-2 border-b border-gray-200">
         {/* h-full w-full mt-[10px] px-5 */}
         <header className="flex items-center justify-between">
           <h3 className="text-[16px]">Message ({chats?.length || 0})</h3>
-          <SearchModal />
+          <SearchModal setResult={setResult} />
         </header>
       </div>
 
       <main className="flex-1 custom-scrollbar overflow-y-auto min-h-0 rounded-lg">
         {/* flex flex-col itemms-start mt-[1.5rem] pb-3 */}
-          {sortedChats?.map((chat) => (
-            <>
-              <button 
-                key={chat?.uid} 
-                className="flex items-start justify-between w-full border-b border-gray-300 px-5 pb-3 pt-3 cursor-pointer hover:bg-[#fcfcfc]"
-              >
-                {chat?.users
-                  ?.filter((user) => user?.email !== "catchatuser@test.com")
-                  ?.map((user) => (
-                    <>
-                      <div className="flex items-center gap-3">
-                        <img 
-                          src={user?.image}
-                          alt="Cat-Chat Friend Icon"
-                          className="w-[40px] h-[40px] object-cover rounded-full outline-1 outline-gray-300"
-                        />
-                        <span>
-                          <h2 className="p-0 font-semibold text-[] text-[17px] text-left">{user?.fullName}</h2>
-                          <p className="p-0 font-light text-[] text-[14px] text-left">{chat?.lastMessage}</p>
-                        </span>
-                      </div>
-                      <p className="p-0 font-regular text-[] text-[11px] text-right">{formatTimestamp(chat?.lastMessageTimeStamp)}</p>
-                    </>
-                ))}
-              </button>
-            </>
-          ))}
+        <SearchResult result={result} />
+        {sortedChats?.map((chat) => (
+          <>
+            <button 
+              key={chat?.uid} 
+              className="flex items-start justify-between w-full border-b border-gray-300 px-5 pb-3 pt-3 cursor-pointer hover:bg-[#fcfcfc]"
+            >
+              {chat?.users
+                ?.filter((user) => user?.email !== "catchatuser@test.com")
+                ?.map((user) => (
+                  <>
+                    <div className="flex items-center gap-3">
+                      <img 
+                        src={user?.image}
+                        alt="Cat-Chat Friend Icon"
+                        className="w-[40px] h-[40px] object-cover rounded-full outline-1 outline-gray-300"
+                      />
+                      <span>
+                        <h2 className="p-0 font-semibold text-[] text-[17px] text-left">{user?.fullName}</h2>
+                        <p className="p-0 font-light text-[] text-[14px] text-left">{chat?.lastMessage}</p>
+                      </span>
+                    </div>
+                    <p className="p-0 font-regular text-[] text-[11px] text-right">{formatTimestamp(chat?.lastMessageTimeStamp)}</p>
+                  </>
+              ))}
+            </button>
+          </>
+        ))}
       </main>
+
     </section>
   )
 }
