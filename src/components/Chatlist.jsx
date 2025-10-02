@@ -5,6 +5,8 @@ import SearchResult from './SearchResult'
 import { formatTimestamp } from '../utils/formatTimestamp'
 import chatData from '../data/chats'
 import { listenForChats } from '../firebase/firebase'
+import { FaXmark } from 'react-icons/fa6'
+
 
 const Chatlist = () => {
   const iconStyle = { color: '#ffffffff' }
@@ -28,6 +30,8 @@ const Chatlist = () => {
   }, [chats])
 
   const [result, setResult] = useState([]);
+  const [showResult, setShowResult] = useState(false);
+
 
   return (
     <section className="hidden flex-col lg:flex min-h-0 my-4 ml-2 w-full lg:w-[350px] xl:w-[400px] bg-[white] rounded-lg shadow-sm">
@@ -55,14 +59,14 @@ const Chatlist = () => {
       <div className="shrink-0 px-3 py-2 border-b border-gray-200">
         {/* h-full w-full mt-[10px] px-5 */}
         <header className="flex items-center justify-between">
-          <h3 className="text-[16px]">Message ({chats?.length || 0})</h3>
-          <SearchModal setResult={setResult} />
+          <h3 className="text-[15px]">Message ({chats?.length || 0})</h3>
+          <SearchModal setResult={setResult} setShowResult={setShowResult} />
         </header>
       </div>
 
       <main className="flex-1 custom-scrollbar overflow-y-auto min-h-0 rounded-lg">
         {/* flex flex-col itemms-start mt-[1.5rem] pb-3 */}
-        <SearchResult result={result} />
+        {showResult && <SearchResult result={result} />}
         {sortedChats?.map((chat) => (
           <>
             <button 
