@@ -1,20 +1,26 @@
 import React from 'react'
 
-const SearchResult = ({result}) => {
+const SearchResult = ({ result, startChat, setIsActive, setShowResult }) => {
   return (
-    <div className="block w-full h-full bg-[#FFFFFF] flex flex-col mt-1">
-      <div className="ml-2 font-bold">
-        Contacts
-      </div>
-      {
-        result.map((result, idx) => {
-          return (
-            <div key={idx}>
-              <p className="text-lg mt-1 mx-3 cursor-pointer hover:bg-[#E7E7E7] py-2 px-2">{result.name}</p>
-            </div>
-          )
-        })
-      }
+    <div className="w-full h-full flex flex-col space-y-0">
+      <div className="ml-2 my-2 font-bold">People</div>
+      {result.map((result, idx) => (
+        <div 
+          key={idx} 
+          className="hover:bg-gray-100 rounded p-4 h-16 flex items-center cursor-pointer"
+          onClick={() => {
+            startChat(result)
+            setShowResult(false);
+            setIsActive(false)
+          }}
+        >
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" className="w-10 h-10 mr-4 rounded-full" />
+          <div className="flex flex-col">
+            <div className="text-sm font-medium">{result.fullName}</div>
+            <p className="text-xs text-gray-500">@{result.username}</p>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

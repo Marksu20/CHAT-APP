@@ -4,7 +4,7 @@ const chatData = [
     users: [
       {
         uid: "1",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Kiki Bakuki",
         username: "kikibakuki924",
         image: "https://randomuser.me/api/portraits/men/32.jpg",
@@ -38,7 +38,7 @@ const chatData = [
     users: [
       {
         uid: "3",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Alice Smith",
         username: "alice",
         image: "https://randomuser.me/api/portraits/women/65.jpg",
@@ -72,7 +72,7 @@ const chatData = [
     users: [
       {
         uid: "5",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Charlie Brown",
         username: "charlie",
         image: "https://randomuser.me/api/portraits/men/12.jpg",
@@ -106,7 +106,7 @@ const chatData = [
     users: [
       {
         uid: "7",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Eve Adams",
         username: "eve",
         image: "https://randomuser.me/api/portraits/women/22.jpg",
@@ -140,7 +140,7 @@ const chatData = [
     users: [
       {
         uid: "1",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Kiki Bakuki",
         username: "kikibakuki924",
         image: "https://randomuser.me/api/portraits/men/32.jpg",
@@ -174,7 +174,7 @@ const chatData = [
     users: [
       {
         uid: "3",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Alice Smith",
         username: "alice",
         image: "https://randomuser.me/api/portraits/women/65.jpg",
@@ -208,7 +208,7 @@ const chatData = [
     users: [
       {
         uid: "5",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Charlie Brown",
         username: "charlie",
         image: "https://randomuser.me/api/portraits/men/12.jpg",
@@ -242,7 +242,7 @@ const chatData = [
     users: [
       {
         uid: "7",
-        email: "catchatuser@test.com",
+        email: "kelly@gmail.com",
         fullName: "Eve Adams",
         username: "eve",
         image: "https://randomuser.me/api/portraits/women/22.jpg",

@@ -1,12 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
 import { FaSignInAlt } from 'react-icons/fa'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase/firebase'
 
 const Login = ({isLogin, setIsLogin}) => {
   const [userData, setUserData] = useState({
       email: "",
       password: ""
     });
+  const [isLoading, setIsLoading] = useState(false);
   
     const handleChangeUserData = (e) => {
       const { name, value } = e.target;
@@ -18,10 +21,14 @@ const Login = ({isLogin, setIsLogin}) => {
     };
   
     const handleAuth = async () => {
+      setIsLoading(true)
       try {
-        alert("Register Successful" )
+        await signInWithEmailAndPassword(auth, userData?.email, userData?.password);
       } catch (error) {
         console.error(error)
+        alert(error.message)
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -84,10 +91,16 @@ const Login = ({isLogin, setIsLogin}) => {
             <div>
               <button
                 type="button"
+                disabled={isLoading}
                 onClick={handleAuth}
                 className="flex justify-center items-center gap-2 w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer"
               >
-                Sign in <FaSignInAlt />
+                {isLoading ? (
+                  <>Sign in...</>
+                ) : (
+                  <>Sign in <FaSignInAlt /></>
+                )
+                }
               </button>
             </div>
           </form>

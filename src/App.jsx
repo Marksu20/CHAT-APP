@@ -10,6 +10,7 @@ import { auth } from './firebase/firebase'
 const App = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [user, setUser] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     const currentUser = auth.currentUser;
@@ -29,8 +30,8 @@ const App = () => {
       {user ? (
         <div className="flex lg:flex-row flex-col w-full h-screen bg-[#F5F5F5]">
           <Navlinks />
-          <Chatlist />
-          <Chatbox />
+          <Chatlist setSelectedUser={setSelectedUser} />
+          <Chatbox selectedUser={selectedUser} />
         </div>
         ) : (
         <div className="block">
