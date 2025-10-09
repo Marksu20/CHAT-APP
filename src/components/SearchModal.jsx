@@ -34,13 +34,13 @@ const SearchModal = ({ setResult, setShowResult, isActive, setIsActive, searchIn
 
   return (
     <>
-    <div className="bg-[#E7E7E7] w-[65%] rounded-lg h-[12] p-2 ml-5 flex items-center">
-      <FaSearch className="text-indigo-500 cursor-pointer mx-1" />
+    <div className="bg-[#3A3B3C] w-[65%] rounded-lg h-[12] p-2 ml-5 flex items-center">
+      <FaSearch className="text-[#FFFFFF] cursor-pointer mx-1"/>
       <input 
         type="text" 
         placeholder="Search..."
         value={searchInput} 
-        className="bg-transparent border-none outline-none text-md ml-1 placeholder:text-gray-300 text-black w-full" 
+        className="bg-transparent border-none outline-none text-md ml-1 placeholder:text-gray-300 text-[#FFFFFF] w-full" 
         onChange={(e) => {
           setSearchInput(e.target.value);
           setShowResult(true);
@@ -54,15 +54,17 @@ const SearchModal = ({ setResult, setShowResult, isActive, setIsActive, searchIn
       />
     </div>
     {isActive && (  
-      <FaXmark 
-        className="cursor-pointer ml-2 text-gray-600 hover:text-black"
-        onClick={() => {
-          setSearchInput("")
-          setResult([])
-          setShowResult(false)
-          setIsActive(false)
-        }}
-      />
+      <div className="p-2 hover:bg-[#363636] rounded-lg ml-1 cursor-pointer">
+        <FaXmark 
+          className="text-[#FFFFFF] "
+          onClick={() => {
+            setSearchInput("")
+            setResult([])
+            setShowResult(false)
+            setIsActive(false)
+          }}
+        />
+      </div>
     )}
     </>
   )

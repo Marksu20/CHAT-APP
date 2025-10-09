@@ -49,18 +49,18 @@ const Chatlist = ({ setSelectedUser }) => {
   };
 
   return (
-    <section className="hidden flex-col lg:flex min-h-0 my-4 ml-2 w-full lg:w-[350px] xl:w-[400px] bg-[white] rounded-lg shadow-sm">
+    <section className="hidden flex-col lg:flex min-h-0 my-4 ml-2 w-full lg:w-[350px] xl:w-[400px] bg-[#1F1F1F] rounded-lg shadow-lg">
       <header className="flex items-center justify-between h-[70px] shrink-0 p-4">
         {/* lg:border-b border-b-1 border-gray-300 p-4 sticky top-0 md:static z-[100] */}
         <main className="flex items-center gap-3">
           <img 
             src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" 
             alt="Default Avatar Icon"
-            className="w-[44px] h-[44px] object-cover rounded-full outline-1 outline-gray-300"
+            className="w-[44px] h-[44px] object-cover rounded-full"
           />
           <span>
-            <h3 className="p-0 font-semibold text-[#000000] md:text-[17px]">{user?.fullName}</h3>
-            <p className="p-0 font-light text-[] text-[15px]">@{user?.username}</p>
+            <h3 className="p-0 font-semibold text-[#FFFFFF] md:text-[17px]">{user?.fullName}</h3>
+            <p className="p-0 font-light text-[#FFFFFF] text-[15px]">@{user?.username}</p>
           </span>
         </main>
 
@@ -70,9 +70,9 @@ const Chatlist = ({ setSelectedUser }) => {
       </header>
 
       {/* Sub-header */}
-      <div className="shrink-0 px-3 py-2 border-b border-gray-200">
+      <div className="shrink-0 px-3 py-2">
         <header className="flex items-center justify-between">
-          <h3 className="text-[15px]">Message ({chats?.length || 0})</h3>
+          <h3 className="text-[15px] text-[#FFFFFF] ">Message ({chats?.length || 0})</h3>
           <SearchModal 
             setResult={setResult} 
             setShowResult={setShowResult} 
@@ -96,7 +96,7 @@ const Chatlist = ({ setSelectedUser }) => {
           <>
             {sortedChats?.map((chat) => (
             <>
-              <button key={chat?.uid} className="flex items-start justify-between w-full border-b border-gray-300 px-5 pb-3 pt-3 cursor-pointer hover:bg-[#fcfcfc]">
+              <button key={chat?.uid} className="flex items-start justify-between w-full px-5 pb-3 pt-3 cursor-pointer hover:bg-[#3A3A3A]">
                 {chat?.users
                   ?.filter((user) => user?.email !== auth?.currentUser?.email)
                   ?.map((user) => (
@@ -105,14 +105,14 @@ const Chatlist = ({ setSelectedUser }) => {
                         <img 
                           src={user?.image || "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" }
                           alt="Cat-Chat Friend Icon"
-                          className="w-[40px] h-[40px] object-cover rounded-full outline-1 outline-gray-300"
+                          className="w-[40px] h-[40px] object-cover rounded-full"
                         />
                         <span>
-                          <h2 className="p-0 font-semibold text-[] text-[17px] text-left">{user?.fullName}</h2>
-                          <p className="p-0 font-light text-[] text-[14px] text-left">{chat?.lastMessage}</p>
+                          <h2 className="p-0 font-semibold text-[#FFFFFF] text-[17px] text-left">{user?.fullName}</h2>
+                          <p className="p-0 font-light text-gray-400 text-[14px] text-left">{chat?.lastMessage}</p>
                         </span>
                       </div>
-                      <p className="p-0 font-regular text-[] text-[11px] text-right">{formatTimestamp(chat?.lastMessageTimeStamp)}</p>
+                      <p className="p-0 font-regular text-gray-400 text-[11px] text-right">{formatTimestamp(chat?.lastMessageTimeStamp)}</p>
                     </>
                 ))}
               </button>

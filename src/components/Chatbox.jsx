@@ -65,9 +65,9 @@ const Chatbox = ({ selectedUser }) => {
   return (
     <>
       {selectedUser ? (
-        <section className="flex flex-col flex-1 min-h-0 my-4 mx-2 mr-4 md:m-4 sm:m-4 bg-white rounded-lg shadow-sm">
+        <section className="flex flex-col flex-1 min-h-0 my-4 mx-2 mr-4 md:m-4 sm:m-4 rounded-lg shadow-sm bg-[#1F1F1F]">
           {/* flex flex-col flex-1 min-h-0 items-start justify-start mx-3 my-3 w-[100%] bg-white */}
-          <header className="w-[100%] h-[82px] shadow-sm m:h-fit p-4 bg-white rounded-t-lg mb-3">
+          <header className="w-[100%] h-[82px] shadow-sm m:h-fit p-4 bg-[#1F1F1F] rounded-t-lg mb-3">
             <main className="flex items-center gap-3">
               <span>
                 <img 
@@ -77,8 +77,8 @@ const Chatbox = ({ selectedUser }) => {
                 />
               </span>
               <span>
-                <h3 className="font-semibold text=[] text-lg">{selectedUser?.fullName}</h3>
-                <p className="font-light text=[] text-sm">@{selectedUser?.username}</p>
+                <h3 className="font-semibold text-[#FFFFFF] text-lg">{selectedUser?.fullName}</h3>
+                <p className="font-light text-gray-400 text-sm">@{selectedUser?.username}</p>
               </span>
             </main>
           </header>
@@ -94,8 +94,8 @@ const Chatbox = ({ selectedUser }) => {
                       <div key={index} className="flex flex-col items-end w-full mb-2">
                         <span className="flex gap-3 max-w-[50%] w-fit h-auto ms-5 mx-3">
                           <div>
-                            <div className="flex items-center bg-[#F0F0F0] justify-center px-4 py-3 rounded-lg shadow-sm break-words">
-                              <h4 className="break-words whitespace-pre-line text-wrap">{msg.text}</h4>
+                            <div className="flex items-center bg-[#4C4C4C] justify-center px-4 py-3 rounded-lg shadow-sm break-words">
+                              <h4 className="break-words whitespace-pre-line text-wrap text-[#FFFFFF]">{msg.text}</h4>
                             </div>
                             <p className="text-gray-400 text-xs mt-1 text-right">{formatTimestamp(msg?.timestamp)}</p>
                           </div>
@@ -111,8 +111,8 @@ const Chatbox = ({ selectedUser }) => {
                               className="w-[40px] h-[40px] object-cover rounded-full"
                             />
                             <div>
-                              <div className="flex items-center bg-[#F0F0F0] justify-center px-4 py-3 rounded-lg shadow-sm break-words">
-                                <h4 className="break-words whitespace-pre-line text-wrap">{msg.text}</h4>
+                              <div className="flex items-center bg-[#4C4C4C] justify-center px-4 py-3 rounded-lg shadow-sm break-words">
+                                <h4 className="break-words whitespace-pre-line text-wrap text-[#FFFFFF]">{msg.text}</h4>
                               </div>
                               <p className="text-gray-400 text-xs mt-1">{formatTimestamp(msg?.timestamp)}</p>
                             </div>
@@ -126,13 +126,13 @@ const Chatbox = ({ selectedUser }) => {
             </section>
             
             {/* message input */}
-            <div className="outline-1 outline-gray-200 shadow-md rounded-lg mx-2 my-2 shrink-0 p-0 w-[98%]">
-              <form onSubmit={handleSendMessage} className="flex items-center bg-white h-[45px] w-[100%] px-2 rounded-lg relative">
+            <div className="shadow-md rounded-lg mx-2 my-2 shrink-0 p-0 w-[98%]">
+              <form onSubmit={handleSendMessage} className="flex items-center bg-[#3A3B3C] h-[45px] w-[100%] px-2 rounded-lg relative">
                 <input 
                   type="text" 
                   value={messageText}
                   placeholder="Write your message..." 
-                  className="h-full text-[] outline-none text-[16px] pl-3 pr-15 rounded-lg w-[100%]"
+                  className="h-full text-[#FFFFFF] outline-none text-[16px] pl-3 pr-15 rounded-lg w-[100%]"
                   onChange={(e) => sendMessageText(e.target.value)}
                 />
                 {/* send button */}
@@ -144,7 +144,7 @@ const Chatbox = ({ selectedUser }) => {
           </main>
         </section>
       ) : (
-        <section className="h-screen w-[100%]">
+        <section className="flex flex-col flex-1 min-h-0 my-4 mx-2 mr-4 md:m-4 sm:m-4 bg-[#1F1F1F] rounded-lg shadow-sm">
           <div className="flex flex-col justify-center items-center h-[100vh]">
             <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" width={100}/>
             <h1 className="text-[30px] font-bold text-indigo-600 mt-5"> Welcome to Cat-Chat</h1>

@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       {user ? (
-        <div className="flex lg:flex-row flex-col w-full h-screen bg-[#F5F5F5]">
+        <div className="flex lg:flex-row flex-col w-full h-screen bg-[#1A1A1A]">
           <Navlinks />
           <Chatlist setSelectedUser={setSelectedUser} />
           <Chatbox selectedUser={selectedUser} />

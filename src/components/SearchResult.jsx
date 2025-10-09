@@ -3,7 +3,7 @@ import React from 'react'
 const SearchResult = ({ result, startChat, setIsActive, setShowResult }) => {
   return (
     <div className="w-full h-full flex flex-col space-y-0">
-      <div className="ml-2 my-2 font-bold">People</div>
+      <div className="ml-2 my-2 font-bold text-[#FFFFFF]">People</div>
       {result.map((result, idx) => (
         <div 
           key={idx} 
